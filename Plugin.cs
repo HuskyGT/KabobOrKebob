@@ -1,4 +1,4 @@
-﻿using BepInEx;
+using BepInEx;
 using System;
 using UnityEngine;
 using Utilla;
@@ -20,9 +20,7 @@ namespace KabobOrKebob
 	{
 		bool inRoom;
 		public static string fileLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-		GameObject kabobr;
 		GameObject kabobl;
-		GameObject handr;
 		GameObject handl;
 		void OnEnable()
 		{
@@ -47,29 +45,13 @@ namespace KabobOrKebob
 			/* Code here runs after the game initializes (i.e. GorillaLocomotion.Player.Instance != null) */
 			GameObject knife = UnityEngine.Object.Instantiate<GameObject>(AssetBundle.LoadFromFile(Plugin.fileLocation + "\\Assets\\kabob knife").LoadAsset<GameObject>("KABOB KNIFE"));
 			knife.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
-			// right hand kabob used but keeping it here so left hand doesnt break ill remove this at a later date still got some ideas for this mod
-			kabobr = GameObject.Find("KABOB KNIFE(Clone)");
-			handr = GameObject.Find("OfflineVRRig/Actual Gorilla/rig/body/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.01.R/");
-			kabobr.transform.parent = handr.transform;
-			kabobr.transform.localPosition = new Vector3(-0.1f, 0f, 0f);
-			kabobr.transform.rotation = Quaternion.Euler(0f, 70f, 0f);
-			kabobr.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
 			// left hand kabob
-			Instantiate(kabobr);
-			kabobl = GameObject.Find("KABOB KNIFE(Clone)(Clone)");
+			kabobl = GameObject.Find("KABOB KNIFE(Clone)");
 			handl = GameObject.Find("OfflineVRRig/Actual Gorilla/rig/body/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.01.L/");
 			kabobl.transform.parent = handl.transform;
 			kabobl.transform.localPosition = new Vector3(-0.1f, 0f, 0.08f);
-			kabobl.transform.rotation = Quaternion.Euler(0f, 70f, 0f);
+			kabobl.transform.rotation = Quaternion.Euler(0f, 80f, 0f);
 			kabobl.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
-			kabobr.SetActive(false);
-			// 1st is upside down
-			// last is perfect... maybe
-			// nope
-			// left hand good right removed bc it kinda meh still need the code though because of poor decisions when writing it
-
-
-
 			/* Code here runs after the game initializes (i.e. GorillaLocomotion.Player.Instance != null) */
 		}
 		void Update()
