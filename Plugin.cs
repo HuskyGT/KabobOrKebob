@@ -19,9 +19,10 @@ namespace KabobOrKebob
 	public class Plugin : BaseUnityPlugin
 	{
 		bool inRoom;
-		public static string fileLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+		public static readonly string assemblyLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 		GameObject kabobl;
 		GameObject handl;
+
 		void OnEnable()
 		{
 			/* Set up your mod here */
@@ -43,7 +44,11 @@ namespace KabobOrKebob
 		void OnGameInitialized(object sender, EventArgs e)
 		{
 			/* Code here runs after the game initializes (i.e. GorillaLocomotion.Player.Instance != null) */
-			GameObject knife = UnityEngine.Object.Instantiate<GameObject>(AssetBundle.LoadFromFile(Plugin.fileLocation + "\\Assets\\kabob knife").LoadAsset<GameObject>("KABOB KNIFE"));
+			Stream str = Assembly.GetExecutingAssembly().GetManifestResourceStream("KabobOrKebob.Assets.kabob knife");
+			AssetBundle bundle = AssetBundle.LoadFromStream(str);
+			GameObject knife = bundle.LoadAsset<GameObject>("KABOB KNIFE");
+			Instantiate(knife);
+
 			knife.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
 			// left hand kabob
 			kabobl = GameObject.Find("KABOB KNIFE(Clone)");
