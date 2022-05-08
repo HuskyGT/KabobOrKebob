@@ -5,7 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\..\..\..\.editorconfig" Link=".editorconfig" />
+    <None Remove="Assets\kabob knife" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\kabob knife" />
   </ItemGroup>
 
   <ItemGroup>
