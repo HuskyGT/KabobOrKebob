@@ -26,13 +26,15 @@ namespace KabobOrKebob
 		void OnEnable()
 		{
 			Utilla.Events.GameInitialized += OnGameInitialized;
-			Kabob.SetActive(true);
+			enabled = true;
+			Kabob.SetActive(enabled);
 		}
 
 		void OnDisable()
 		{
 			Utilla.Events.GameInitialized -= OnGameInitialized;
 			Kabob.SetActive(false);
+			enabled = false;
 		}
 
 		void OnGameInitialized(object sender, EventArgs e)
@@ -45,10 +47,10 @@ namespace KabobOrKebob
 
 			Kabob = Instantiate(knife);
 			Kabob.transform.SetParent(Hand.transform, false);
-			Kabob.transform.localPosition = new Vector3(-0.1f, 0f, 0.08f);
-			Kabob.transform.localRotation = Quaternion.Euler(0f, 80f, 0f);
-			Kabob.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
-			Kabob.SetActive(this.enabled);
+			Kabob.transform.localPosition = new Vector3(-0.018f, 0.017f, 0.011f);
+			Kabob.transform.localRotation = Quaternion.Euler(7.1491f, 278.8881f, 2.063f);
+			Kabob.transform.localScale = new Vector3(0.09188f, 0.05f, 0.05f);
+			Kabob.SetActive(enabled);
 		}
 	}
 }
